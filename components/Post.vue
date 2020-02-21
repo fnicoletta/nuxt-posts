@@ -11,7 +11,7 @@
     </div>
     <div class="post-right">
       <label class="checkbox">
-        <input type="checkbox" />
+        <input type="checkbox" :checked="isRead" />
         Read
       </label>
     </div>
@@ -24,7 +24,6 @@ export default {
   data() {
     return {};
   },
-  methods: {},
   props: {
     title: {
       type: String,
@@ -43,6 +42,10 @@ export default {
       type: String,
       required: false,
       default: "Anonymous"
+    },
+    isRead: {
+      type: Boolean,
+      required: false
     }
   },
   computed: {}

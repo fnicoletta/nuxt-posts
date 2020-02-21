@@ -18,12 +18,18 @@
                   :subtitle="post.subtitle"
                   :author="post.author"
                   :date="new Date()"
+                  :isRead="post.isRead"
                 />
               </div>
             </div>
           </div>
         </div>
       </div>
+      <!-- <form>
+        <input type="text" v-model="form.title" />
+        <input type="text" v-model="form.subtitle" />
+      </form>
+      {{ isFormValid() }} -->
     </div>
   </div>
 </template>
@@ -32,21 +38,32 @@
 import Navbar from "~/components/Navbar.vue";
 import Post from "~/components/Post.vue";
 export default {
+  name: "nuxt-posts",
+  data() {
+    return {
+      form: {
+        title: "ligma",
+        subtitle: "bawlz"
+      }
+    };
+  },
   components: {
     Navbar,
     Post
   },
-  data() {
-    return {
-      posts: [
-        {
-          _id: 0,
-          title: "title",
-          subtitle: "sub",
-          author: "Joe Mama"
-        }
-      ]
-    };
+  computed: {
+    posts() {
+      return this.$store.state.posts;
+    }
+  },
+  methods: {
+    isFormValid() {
+      if (this.form.title) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
 };
 </script>
